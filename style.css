@@ -7,10 +7,11 @@ body>h1{
 }
 .mycl{
   display: flex;
-  
+  /* padding-top: ; */
   justify-content: center;
   /* border: 10px ; */
   flex-direction: row;
+  pointer-events: none;
 
 }
 .sq{
@@ -23,6 +24,7 @@ body>h1{
   /* justify-items: center; */
   text-align: center;
   font-size: 70px;
+  pointer-events: all;
 }
 .btn{
   display: flex;

@@ -8,7 +8,7 @@ const winningConditions = [
     [0, 4, 8],
     [2, 4, 6],
 ]
-let gameOver = false
+let gameOver = 0
 let turn = 0
 function gameCompleteLogic() {
     let myArr = []
@@ -17,29 +17,34 @@ function gameCompleteLogic() {
     for(i=0;i<3;i++){
         for(j=0;j<3;j++){
             var val = document.getElementById(idName.concat(i.toString(),j.toString())).innerHTML
-            myArr.push((val==="")?k:val)
-            k++
+            myArr.push((val==="")?k++:val)
         }
         
     }
+    console.log(myArr);
     winningConditions.forEach(element => {
         if(myArr[element[0]] === myArr[element[1]] && myArr[element[0]] === myArr[element[2]] ){
-            gameOver = true
+            gameOver = 1
             return 
+        } else if(k==0){
+            gameOver = -1
+            return;
         }
     })
 
 }
 
 document.getElementById("grid").addEventListener('click',function(e){
-    // console.log(e);
-    if(gameOver === false){
+    console.log(e);
+    if(gameOver === 0 ){
         e.target.innerHTML = turn===0?"X":"O"
         turn = 1-turn
         gameCompleteLogic()
-        if(gameOver === true){
+        if(gameOver === 1){
             document.getElementById("result").innerHTML = turn===0?"player 2 winner":"player 1 winner"
             // alert(turn===0?"player 2 winner":"player 1 winner")
+        }else if(gameOver === -1){
+            document.getElementById("result").innerHTML = "Oop's its a Tie"
         }
 
     }
