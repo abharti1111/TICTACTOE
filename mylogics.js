@@ -24,10 +24,15 @@ function gameCompleteLogic() {
     console.log(myArr);
     winningConditions.forEach(element => {
         if(myArr[element[0]] === myArr[element[1]] && myArr[element[0]] === myArr[element[2]] ){
-            gameOver = 1
-            return 
-        } else if(k==0){
-            gameOver = -1
+            console.log("executed");
+            // gameOver = 1
+            document.getElementById("result").innerHTML = turn===0?"player 2 winner":"player 1 winner"
+            return ;
+        }else{
+            // document.getElementById("result").innerHTML = "Oop's its a Tie"
+            console.log(k);
+            gameOver = gameOver===0?0:-1
+            
             return;
         }
     })
@@ -35,16 +40,14 @@ function gameCompleteLogic() {
 }
 
 document.getElementById("grid").addEventListener('click',function(e){
-    console.log(e);
+    // console.log(e);
     if(gameOver === 0 ){
         e.target.innerHTML = turn===0?"X":"O"
         turn = 1-turn
         gameCompleteLogic()
-        if(gameOver === 1){
-            document.getElementById("result").innerHTML = turn===0?"player 2 winner":"player 1 winner"
-            // alert(turn===0?"player 2 winner":"player 1 winner")
-        }else if(gameOver === -1){
+        if(gameOver === -1){
             document.getElementById("result").innerHTML = "Oop's its a Tie"
+            // alert(turn===0?"player 2 winner":"player 1 winner")
         }
 
     }
