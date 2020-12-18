@@ -30,9 +30,8 @@ function gameCompleteLogic() {
             return ;
         }else{
             // document.getElementById("result").innerHTML = "Oop's its a Tie"
-            console.log(k);
+            // console.log(k);
             gameOver = gameOver===0?0:-1
-            
             return;
         }
     })
